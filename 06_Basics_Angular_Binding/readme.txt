@@ -171,6 +171,119 @@ Template (HTML) :
 <p [style.font-size]="fontSize">This text will be styled based on fontSize.</p>
 
 
+5. ngStyle And ngClaass Binding
+
+In Angular, ngClass and ngStyle are structural directives used to dynamically add or remove classes and styles to/from elements in your templates.
+
+
+1. ngClass (Adding/Removing CSS Classes Dynamically)
+The ngClass directive allows you to conditionally apply CSS classes to an HTML element. This is useful when you want to change the appearance of an element based on certain conditions.
+
+
+Example:
+html:
+
+<div [ngClass]="{ 'active': isActive, 'highlighted': isHighlighted }">
+  This div will have dynamic classes.
+</div>
+
+typeScript:
+
+export class MyComponent {
+  isActive: boolean = true;
+  isHighlighted: boolean = false;
+}
+
+Explanation:
+
+1. ngClass takes an object where the keys are class names and the values are boolean expressions.
+2. If the value is true, the class will be applied to the element.
+
+In this example:
+
+1. If isActive is true, the active class is added to the <div>.
+2. If isHighlighted is false, the highlighted class is not applied.
+
+Other Ways to Use ngClass:
+
+1. Array Syntax:
+
+html:
+
+<div [ngClass]="['class1', 'class2']">This div will have multiple classes</div>
+
+2. String Syntax:
+
+html:
+
+<div [ngClass]="'active'">This div will have the 'active' class</div>
+
+
+2. ngStyle (Adding/Removing Inline Styles Dynamically)
+The ngStyle directive allows you to apply inline styles dynamically to an element. It is useful when you want to adjust the style properties (like width, color, etc.) of an element based on conditions in your component.
+
+
+Example:
+
+html:
+
+<div [ngStyle]="{ 'background-color': bgColor, 'font-size': fontSize + 'px' }">
+  This div has dynamic styles.
+</div>
+
+typeScript:
+
+export class MyComponent {
+  bgColor: string = 'lightblue';
+  fontSize: number = 20;
+}
+
+Explanation:
+
+1. ngStyle takes an object where the keys are CSS property names and the values are expressions that determine their values.
+
+In this example:
+
+1. The background-color of the div is set to lightblue.
+2. The font-size is dynamically set to 20px.
+
+
+Other Ways to Use ngStyle:
+Object Syntax:
+
+html:
+
+<div [ngStyle]="styles">This div has dynamic inline styles</div>
+
+typeScript:
+
+export class MyComponent {
+  styles = {
+    'background-color': 'yellow',
+    'color': 'red'
+  };
+}
+
+Binding with a Variable:
+
+html:
+
+<div [ngStyle]="{'color': color}">Text with dynamic color</div>
+
+typeScript:
+
+export class MyComponent {
+  color: string = 'green';
+}
+
+Summary:
+
+ngClass is used for adding or removing CSS classes dynamically based on conditions in your component.
+ngStyle is used for adding or modifying inline styles dynamically based on conditions.
+
+Both directives allow Angular developers to bind data to the UI and make the appearance of elements more dynamic based on the component's state.
+
+
 
 2 Two-way data binding
     -> Two-way data binding in Angular is a powerful feature that allows for automatic synchronization of data between the model (component class) and the view (template). It ensures that any change in the model updates the view and vice versa, keeping both in sync effortlessly.
