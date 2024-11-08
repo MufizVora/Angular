@@ -8,6 +8,6 @@ Some Important CLI commands that is used in angular.
 6. Create a model using CLI : Here is command (ng generate class model_name)
 7. Create a routing module using CLI : Here is command (ng generate module routing --routing)
 8. Create a module using CLI : Here is command (ng generate module module_name)
-9. Create a pipe using CLI : Here is command (ng generate pipe pipe_name)
+9. Create a custom pipe using CLI : Here is command (ng generate pipe pipe_name)
 10. Create a custom directive using CLI : Here is command (ng generate directive directive_name)
 11. To run your angular app using CLI : Here is command (ng serve)

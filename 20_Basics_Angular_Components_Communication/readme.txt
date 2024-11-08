@@ -18,32 +18,51 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-parent',
-  template: `
-    <h1>Parent Component</h1>
-    <app-child [childData]="parentData"></app-child>
-  `,
+  templateUrl: './parent.component.html'  // Parent's HTML template
 })
 export class ParentComponent {
-  parentData = 'Hello from Parent!';
+  // Data to pass to child component
+  parentData = 'Hello from Parent Component!';
 }
 
-Child Component:
+Parent Component HTML (parent.component.html):
+
+<div>
+  <h1>Parent Component</h1>
+  <!-- Passing data to the child component via input binding -->
+  <app-child [data]="parentData"></app-child>
+</div>
+
+Explanation:
+The parentData variable in the ParentComponent holds the string "Hello from Parent Component!".
+The [data]="parentData" binding passes this string down to the data property of the ChildComponent.
+
+2. Child Component: Receiving Data from Parent Component
+In the child component, you define an @Input() property that will accept data from the parent component.
 
 import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-child',
-  template: `<p>Child Component: {{ childData }}</p>`,
+  templateUrl: './child.component.html'  // Child's HTML template
 })
 export class ChildComponent {
-  @Input() childData: string;
+  // Declare an input property to receive data from the parent
+  @Input() data: string | undefined;
 }
 
+Child Component HTML (child.component.html):
+
+<div>
+  <h2>Child Component</h2>
+  <!-- Displaying the data received from the parent -->
+  <p>{{ data }}</p>
+</div>
+
 Explanation:
-
-The parent component defines a property parentData and passes it to the child component using [childData]="parentData".
-The child component receives this data with the @Input() decorator and can use it in its template.
-
+The @Input() decorator allows the child component to receive the data passed from the parent component.
+The data property in the ChildComponent holds the value passed from the parent (parentData).
+The HTML template of the child component uses Angular's interpolation ({{ data }}) to display the data received from the parent.
 
 2. Child to Parent Communication
 
